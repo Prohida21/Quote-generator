@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">
+            <h2>Quote of the day!</h2>
+            <blockquote id="quote">Loading...</blockquote>
+            <span id="author">Loading...</span>
+            <input type="button" value="New Quote" id="btn" onclick="getquote(api_url)">
+        </div>
+        <div class="about">
+            <p>This project is made by PRIYANKA ROHIDA.</p>
+            <p>Have a look on my <a href="https://www.linkedin.com/in/priyanka-rohida-737111206?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bqn1EFB6vRiqBJVoczI6SDw%3D%3D" target="_blank">Linkedin</a> and <a href="https://github.com/Prohida21" target="_blank">Github</a> profiles!</p>
+        </div>
+    </div>
+    <script>
+        const qoute = document.getElementById("quote");
+        const author = document.getElementById("author");
+        const api_url = "https://api.quotable.io/random";
+
+        async function getquote(url) {
+            const response = await fetch(url);
+            var data = await response.json();
+            // console.log(data);
+            quote.innerHTML = data.content;
+            author.innerHTML = "~ " + data.author;
+        }
+        getquote(api_url);
+    </script>
+</body>
+
+</html>
